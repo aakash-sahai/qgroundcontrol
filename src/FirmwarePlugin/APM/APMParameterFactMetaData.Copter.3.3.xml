@@ -1555,6 +1555,27 @@
 <param humanName="AutoTune minimum D" name="ArduCopter:AUTOTUNE_MIN_D" documentation="Defines the minimum D gain" user="Standard">
 <field name="Range">0.001 0.006</field>
 </param>
+<param humanName="TerraLander - Disengament Chord Burn Duration" name="ArduCopter:TL_DURATION_BURN" documentation="TerraLander Mode - Duration for which to burn the various disengament nylon chords (in msec)" user="Advanced">
+<field name="Range">0 2000</field>
+</param>
+<param humanName="TerraLander - Motor Arming Delay" name="ArduCopter:TL_DELAY_MOT_ARM" documentation="TerraLander Mode - Delay between disengament and arming of motors (in msec)" user="Advanced">
+<field name="Range">0 2000</field>
+</param>
+<param humanName="TerraLander - Altitude Inetgration Interval" name="ArduCopter:TL_ALT_INT_INTVL" documentation="TerraLander Mode - Number of fast loop iterations over which altitude must meet the condition to switch to next state (1/400 seconds)" user="Advanced">
+<field name="Range">0 400</field>
+</param>
+<param humanName="TerraLander - Altitude In-flight Delta" name="ArduCopter:TL_ALT_IN_FLIGHT" documentation="TerraLander Mode -  The delta altitude above starting altitude that governs when we consider ourselves in-flight (in cm)" user="Advanced">
+<field name="Range">0 60000</field>
+</param>
+<param humanName="TerraLander - Altitude Past-Apogee Delta" name="ArduCopter:TL_ALT_PAST_APOG" documentation="TerraLander Mode -  The delta altitude below max achieved altitude that governs when we consider ourselves past apogeee (in cm)" user="Advanced">
+<field name="Range">0 60000</field>
+</param>
+<param humanName="TerraLander - Altitude Disengage Delta" name="ArduCopter:TL_ALT_DISENGAGE" documentation="TerraLander Mode -  The delta altitude above starting altitude that governs when we eject from piston and start controlled flight (in cm)" user="Advanced">
+<field name="Range">0 60000</field>
+</param>
+<param humanName="TerraLander - Rover Landing Timeout" name="ArduCopter:TL_RVR_LND_TMOUT" documentation="TerraLander Mode -  Maximum time to wait for Rover to land (in msec)" user="Advanced">
+<field name="Range">0 60000</field>
+</param>
 </parameters>
 <parameters name="AntennaTracker">
 <param humanName="MAVLink system ID of this vehicle" name="AntennaTracker:SYSID_THISMAV" documentation="Allows setting an individual system id for this vehicle to distinguish it from others on the same network" user="Advanced">
