@@ -39,6 +39,7 @@ APMCopterMode::APMCopterMode(uint32_t mode, bool settable) :
     enumToString.insert(AUTOTUNE,  "Autotune");
     enumToString.insert(POS_HOLD,  "Pos Hold");
     enumToString.insert(BRAKE,     "Brake");
+    enumToString.insert(TERRA_LANDER,     "TerraLander");
 
     setEnumToStringMapping(enumToString);
 }
@@ -63,6 +64,7 @@ ArduCopterFirmwarePlugin::ArduCopterFirmwarePlugin(void)
     supportedFlightModes << APMCopterMode(APMCopterMode::AUTOTUNE  ,true);
     supportedFlightModes << APMCopterMode(APMCopterMode::POS_HOLD  ,true);
     supportedFlightModes << APMCopterMode(APMCopterMode::BRAKE     ,true);
+    supportedFlightModes << APMCopterMode(APMCopterMode::TERRA_LANDER     ,true);
     setSupportedModes(supportedFlightModes);
 
     if (!_remapParamNameIntialized) {

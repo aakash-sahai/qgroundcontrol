@@ -971,6 +971,7 @@
 <value code="15">AutoTune</value>
 <value code="16">PosHold</value>
 <value code="17">Brake</value>
+<value code="18">TerraLander</value>
 </values>
 </param>
 <param humanName="Flight Mode 2" name="ArduCopter:FLTMODE2" documentation="Flight mode when Channel 5 pwm is &gt;1230, &lt;= 1360" user="Standard">
@@ -990,6 +991,7 @@
 <value code="15">AutoTune</value>
 <value code="16">PosHold</value>
 <value code="17">Brake</value>
+<value code="18">TerraLander</value>
 </values>
 </param>
 <param humanName="Flight Mode 3" name="ArduCopter:FLTMODE3" documentation="Flight mode when Channel 5 pwm is &gt;1360, &lt;= 1490" user="Standard">
@@ -1009,6 +1011,7 @@
 <value code="15">AutoTune</value>
 <value code="16">PosHold</value>
 <value code="17">Brake</value>
+<value code="18">TerraLander</value>
 </values>
 </param>
 <param humanName="Flight Mode 4" name="ArduCopter:FLTMODE4" documentation="Flight mode when Channel 5 pwm is &gt;1490, &lt;= 1620" user="Standard">
@@ -1028,6 +1031,7 @@
 <value code="15">AutoTune</value>
 <value code="16">PosHold</value>
 <value code="17">Brake</value>
+<value code="18">TerraLander</value>
 </values>
 </param>
 <param humanName="Flight Mode 5" name="ArduCopter:FLTMODE5" documentation="Flight mode when Channel 5 pwm is &gt;1620, &lt;= 1749" user="Standard">
@@ -1047,6 +1051,7 @@
 <value code="15">AutoTune</value>
 <value code="16">PosHold</value>
 <value code="17">Brake</value>
+<value code="18">TerraLander</value>
 </values>
 </param>
 <param humanName="Flight Mode 6" name="ArduCopter:FLTMODE6" documentation="Flight mode when Channel 5 pwm is &gt;=1750" user="Standard">
@@ -1066,6 +1071,7 @@
 <value code="15">AutoTune</value>
 <value code="16">PosHold</value>
 <value code="17">Brake</value>
+<value code="18">TerraLander</value>
 </values>
 </param>
 <param humanName="Simple mode bitmask" name="ArduCopter:SIMPLE" documentation="Bitmask which holds which flight modes use simple heading mode (eg bit 0 = 1 means Flight Mode 0 uses simple mode)" user="Advanced">
@@ -1955,6 +1961,7 @@
 <value code=" 5">GPS</value>
 <value code=" 7">Alexmos Gimbal Serial</value>
 <value code=" 8">SToRM32 Gimbal Serial</value>
+<value code=" 9">Lidar</value>
 </values>
 </param>
 <param humanName="Telem1 Baud Rate" name="SERIAL1_BAUD" documentation="The baud rate used on the Telem1 port. The APM2 can support all baudrates up to 115, and also can support 500. The PX4 can support rates of up to 1500. If you setup a rate you cannot support on APM2 and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
@@ -1981,6 +1988,7 @@
 <value code=" 5">GPS</value>
 <value code=" 7">Alexmos Gimbal Serial</value>
 <value code=" 8">SToRM32 Gimbal Serial</value>
+<value code=" 9">Lidar</value>
 </values>
 </param>
 <param humanName="Telemetry 2 Baud Rate" name="SERIAL2_BAUD" documentation="The baud rate of the Telem2 port. The APM2 can support all baudrates up to 115, and also can support 500. The PX4 can support rates of up to 1500. If you setup a rate you cannot support on APM2 and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
@@ -2007,6 +2015,7 @@
 <value code=" 5">GPS</value>
 <value code=" 7">Alexmos Gimbal Serial</value>
 <value code=" 8">SToRM32 Gimbal Serial</value>
+<value code=" 9">Lidar</value>
 </values>
 </param>
 <param humanName="Serial 3 (GPS) Baud Rate" name="SERIAL3_BAUD" documentation="The baud rate used for the Serial 3 (GPS). The APM2 can support all baudrates up to 115, and also can support 500. The PX4 can support rates of up to 1500. If you setup a rate you cannot support on APM2 and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
@@ -2033,6 +2042,7 @@
 <value code=" 5">GPS</value>
 <value code=" 7">Alexmos Gimbal Serial</value>
 <value code=" 8">SToRM32 Gimbal Serial</value>
+<value code=" 9">Lidar</value>
 </values>
 </param>
 <param humanName="Serial 4 Baud Rate" name="SERIAL4_BAUD" documentation="The baud rate used for Serial4. The APM2 can support all baudrates up to 115, and also can support 500. The PX4 can support rates of up to 1500. If you setup a rate you cannot support on APM2 and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
@@ -2307,7 +2317,7 @@
 </param>
 </parameters>
 <parameters name="RNGFND">
-<param humanName="Rangefinder type" name="RNGFND_TYPE" documentation="What type of rangefinder device that is connected">
+<param humanName="Rangefinder type" name="RNGFND_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
 <values>
 <value code="0">None</value>
 <value code="1">Analog</value>
@@ -2316,9 +2326,11 @@
 <value code="4">PX4-I2C</value>
 <value code="5">PX4-PWM</value>
 <value code="6">BBB-PRU</value>
+<value code="7">LightWareI2C</value>
+<value code="8">LightWareSerial</value>
 </values>
 </param>
-<param humanName="Rangefinder pin" name="RNGFND_PIN" documentation="Analog pin that rangefinder is connected to. Set this to 0..9 for the APM2 analog pins. Set to 64 on an APM1 for the dedicated 'airspeed' port on the end of the board. Set to 11 on PX4 for the analog 'airspeed' port. Set to 15 on the Pixhawk for the analog 'airspeed' port.">
+<param humanName="Rangefinder pin" name="RNGFND_PIN" documentation="Analog pin that rangefinder is connected to. Set this to 0..9 for the APM2 analog pins. Set to 64 on an APM1 for the dedicated 'airspeed' port on the end of the board. Set to 11 on PX4 for the analog 'airspeed' port. Set to 15 on the Pixhawk for the analog 'airspeed' port." user="Standard">
 <values>
 <value code="-1">Not Used</value>
 <value code=" 0">APM2-A0</value>
@@ -2336,30 +2348,30 @@
 <value code=" 64">APM1-airspeed port</value>
 </values>
 </param>
-<param humanName="Rangefinder scaling" name="RNGFND_SCALING" documentation="Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts.">
+<param humanName="Rangefinder scaling" name="RNGFND_SCALING" documentation="Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts." user="Standard">
+<field name="Increment">0.001</field>
 <field name="Units">meters/Volt</field>
-<field name="Increment">0.001</field>
 </param>
-<param humanName="rangefinder offset" name="RNGFND_OFFSET" documentation="Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM and I2C Lidars">
+<param humanName="rangefinder offset" name="RNGFND_OFFSET" documentation="Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM and I2C Lidars" user="Standard">
+<field name="Increment">0.001</field>
 <field name="Units">Volts</field>
-<field name="Increment">0.001</field>
 </param>
-<param humanName="Rangefinder function" name="RNGFND_FUNCTION" documentation="Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.">
+<param humanName="Rangefinder function" name="RNGFND_FUNCTION" documentation="Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters." user="Standard">
 <values>
 <value code="0">Linear</value>
 <value code="1">Inverted</value>
 <value code="2">Hyperbolic</value>
 </values>
 </param>
-<param humanName="Rangefinder minimum distance" name="RNGFND_MIN_CM" documentation="Minimum distance in centimeters that rangefinder can reliably read">
-<field name="Units">centimeters</field>
+<param humanName="Rangefinder minimum distance" name="RNGFND_MIN_CM" documentation="Minimum distance in centimeters that rangefinder can reliably read" user="Standard">
 <field name="Increment">1</field>
-</param>
-<param humanName="Rangefinder maximum distance" name="RNGFND_MAX_CM" documentation="Maximum distance in centimeters that rangefinder can reliably read">
 <field name="Units">centimeters</field>
-<field name="Increment">1</field>
 </param>
-<param humanName="Rangefinder stop pin" name="RNGFND_STOP_PIN" documentation="Digital pin that enables/disables rangefinder measurement for an analog rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This can be used to ensure that multiple sonar rangefinders don't interfere with each other.">
+<param humanName="Rangefinder maximum distance" name="RNGFND_MAX_CM" documentation="Maximum distance in centimeters that rangefinder can reliably read" user="Standard">
+<field name="Increment">1</field>
+<field name="Units">centimeters</field>
+</param>
+<param humanName="Rangefinder stop pin" name="RNGFND_STOP_PIN" documentation="Digital pin that enables/disables rangefinder measurement for an analog rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This can be used to ensure that multiple sonar rangefinders don't interfere with each other." user="Standard">
 <values>
 <value code="-1">Not Used</value>
 <value code="50">Pixhawk AUXOUT1</value>
@@ -2376,26 +2388,26 @@
 <value code="116">PX4IO ACC2</value>
 </values>
 </param>
-<param humanName="Rangefinder settle time" name="RNGFND_SETTLE" documentation="The time in milliseconds that the rangefinder reading takes to settle. This is only used when a STOP_PIN is specified. It determines how long we have to wait for the rangefinder to give a reading after we set the STOP_PIN high. For a sonar rangefinder with a range of around 7m this would need to be around 50 milliseconds to allow for the sonar pulse to travel to the target and back again.">
-<field name="Units">milliseconds</field>
+<param humanName="Rangefinder settle time" name="RNGFND_SETTLE" documentation="The time in milliseconds that the rangefinder reading takes to settle. This is only used when a STOP_PIN is specified. It determines how long we have to wait for the rangefinder to give a reading after we set the STOP_PIN high. For a sonar rangefinder with a range of around 7m this would need to be around 50 milliseconds to allow for the sonar pulse to travel to the target and back again." user="Standard">
 <field name="Increment">1</field>
+<field name="Units">milliseconds</field>
 </param>
-<param humanName="Ratiometric" name="RNGFND_RMETRIC" documentation="This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.">
+<param humanName="Ratiometric" name="RNGFND_RMETRIC" documentation="This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric." user="Standard">
 <values>
 <value code="0">No</value>
 <value code="1">Yes</value>
 </values>
 </param>
-<param humanName="Powersave range" name="RNGFNDRNGFND_PWRRNG" documentation="This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled">
-<field name="Units">meters</field>
+<param humanName="Powersave range" name="RNGFND_PWRRNG" documentation="This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled" user="Standard">
 <field name="Range">0 32767</field>
+<field name="Units">meters</field>
 </param>
-<param humanName="Distance (in cm) from the range finder to the ground" name="RNGFND_GNDCLEAR" documentation="This parameter sets the expected range measurement(in cm) that the range finder should return when the vehicle is on the ground." user="Advanced">
+<param humanName="Distance (in cm) from the range finder to the ground" name="RNGFND_GNDCLEAR" documentation="This parameter sets the expected range measurement(in cm) that the range finder should return when the vehicle is on the ground." user="Standard">
 <field name="Range">0 127</field>
 <field name="Increment">1</field>
 <field name="Units">centimeters</field>
 </param>
-<param humanName="Second Rangefinder type" name="RNGFND2_TYPE" documentation="What type of rangefinder device that is connected">
+<param humanName="Second Rangefinder type" name="RNGFND2_TYPE" documentation="What type of rangefinder device that is connected" user="Advanced">
 <values>
 <value code="0">None</value>
 <value code="1">Analog</value>
@@ -2404,9 +2416,11 @@
 <value code="4">PX4-I2C</value>
 <value code="5">PX4-PWM</value>
 <value code="6">BBB-PRU</value>
+<value code="7">LightWareI2C</value>
+<value code="8">LightWareSerial</value>
 </values>
 </param>
-<param humanName="Rangefinder pin" name="RNGFND2_PIN" documentation="Analog pin that rangefinder is connected to. Set this to 0..9 for the APM2 analog pins. Set to 64 on an APM1 for the dedicated 'airspeed' port on the end of the board. Set to 11 on PX4 for the analog 'airspeed' port. Set to 15 on the Pixhawk for the analog 'airspeed' port.">
+<param humanName="Rangefinder pin" name="RNGFND2_PIN" documentation="Analog pin that rangefinder is connected to. Set this to 0..9 for the APM2 analog pins. Set to 64 on an APM1 for the dedicated 'airspeed' port on the end of the board. Set to 11 on PX4 for the analog 'airspeed' port. Set to 15 on the Pixhawk for the analog 'airspeed' port." user="Advanced">
 <values>
 <value code="-1">Not Used</value>
 <value code=" 0">APM2-A0</value>
@@ -2424,30 +2438,30 @@
 <value code=" 64">APM1-airspeed port</value>
 </values>
 </param>
-<param humanName="Rangefinder scaling" name="RNGFND2_SCALING" documentation="Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts.">
+<param humanName="Rangefinder scaling" name="RNGFND2_SCALING" documentation="Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts." user="Advanced">
+<field name="Increment">0.001</field>
 <field name="Units">meters/Volt</field>
-<field name="Increment">0.001</field>
 </param>
-<param humanName="rangefinder offset" name="RNGFND2_OFFSET" documentation="Offset in volts for zero distance">
+<param humanName="rangefinder offset" name="RNGFND2_OFFSET" documentation="Offset in volts for zero distance" user="Advanced">
+<field name="Increment">0.001</field>
 <field name="Units">Volts</field>
-<field name="Increment">0.001</field>
 </param>
-<param humanName="Rangefinder function" name="RNGFND2_FUNCTION" documentation="Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.">
+<param humanName="Rangefinder function" name="RNGFND2_FUNCTION" documentation="Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters." user="Advanced">
 <values>
 <value code="0">Linear</value>
 <value code="1">Inverted</value>
 <value code="2">Hyperbolic</value>
 </values>
 </param>
-<param humanName="Rangefinder minimum distance" name="RNGFND2_MIN_CM" documentation="Minimum distance in centimeters that rangefinder can reliably read">
-<field name="Units">centimeters</field>
+<param humanName="Rangefinder minimum distance" name="RNGFND2_MIN_CM" documentation="Minimum distance in centimeters that rangefinder can reliably read" user="Advanced">
 <field name="Increment">1</field>
-</param>
-<param humanName="Rangefinder maximum distance" name="RNGFND2_MAX_CM" documentation="Maximum distance in centimeters that rangefinder can reliably read">
 <field name="Units">centimeters</field>
-<field name="Increment">1</field>
 </param>
-<param humanName="Rangefinder stop pin" name="RNGFND2_STOP_PIN" documentation="Digital pin that enables/disables rangefinder measurement for an analog rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This can be used to ensure that multiple sonar rangefinders don't interfere with each other.">
+<param humanName="Rangefinder maximum distance" name="RNGFND2_MAX_CM" documentation="Maximum distance in centimeters that rangefinder can reliably read" user="Advanced">
+<field name="Increment">1</field>
+<field name="Units">centimeters</field>
+</param>
+<param humanName="Rangefinder stop pin" name="RNGFND2_STOP_PIN" documentation="Digital pin that enables/disables rangefinder measurement for an analog rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This can be used to ensure that multiple sonar rangefinders don't interfere with each other." user="Advanced">
 <values>
 <value code="-1">Not Used</value>
 <value code="50">Pixhawk AUXOUT1</value>
@@ -2464,11 +2478,11 @@
 <value code="116">PX4IO ACC2</value>
 </values>
 </param>
-<param humanName="Sonar settle time" name="RNGFND2_SETTLE" documentation="The time in milliseconds that the rangefinder reading takes to settle. This is only used when a STOP_PIN is specified. It determines how long we have to wait for the rangefinder to give a reading after we set the STOP_PIN high. For a sonar rangefinder with a range of around 7m this would need to be around 50 milliseconds to allow for the sonar pulse to travel to the target and back again.">
-<field name="Units">milliseconds</field>
+<param humanName="Sonar settle time" name="RNGFND2_SETTLE" documentation="The time in milliseconds that the rangefinder reading takes to settle. This is only used when a STOP_PIN is specified. It determines how long we have to wait for the rangefinder to give a reading after we set the STOP_PIN high. For a sonar rangefinder with a range of around 7m this would need to be around 50 milliseconds to allow for the sonar pulse to travel to the target and back again." user="Advanced">
 <field name="Increment">1</field>
+<field name="Units">milliseconds</field>
 </param>
-<param humanName="Ratiometric" name="RNGFND2_RMETRIC" documentation="This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.">
+<param humanName="Ratiometric" name="RNGFND2_RMETRIC" documentation="This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric." user="Advanced">
 <values>
 <value code="0">No</value>
 <value code="1">Yes</value>
@@ -2478,6 +2492,194 @@
 <field name="Range">0 127</field>
 <field name="Increment">1</field>
 <field name="Units">centimeters</field>
+</param>
+<param humanName="Bus address of sensor" name="RNGFND_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the LightWare I2C sensor to allow for multiple sensors on different addresses. A value of 0 disables the sensor." user="Standard">
+<field name="Range">0 127</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Bus address of 2nd rangefinder" name="RNGFND2_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the LightWare I2C sensor to allow for multiple sensors on different addresses. A value of 0 disables the sensor." user="Advanced">
+<field name="Range">0 127</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Second Rangefinder type" name="RNGFND3_TYPE" documentation="What type of rangefinder device that is connected">
+<values>
+<value code="0">None</value>
+<value code="1">Analog</value>
+<value code="2">APM2-MaxbotixI2C</value>
+<value code="3">APM2-PulsedLightI2C</value>
+<value code="4">PX4-I2C</value>
+<value code="5">PX4-PWM</value>
+<value code="6">BBB-PRU</value>
+<value code="7">LightWareI2C</value>
+<value code="8">LightWareSerial</value>
+</values>
+</param>
+<param humanName="Rangefinder pin" name="RNGFND3_PIN" documentation="Analog pin that rangefinder is connected to. Set this to 0..9 for the APM2 analog pins. Set to 64 on an APM1 for the dedicated 'airspeed' port on the end of the board. Set to 11 on PX4 for the analog 'airspeed' port. Set to 15 on the Pixhawk for the analog 'airspeed' port.">
+<values>
+<value code="-1">Not Used</value>
+<value code=" 0">APM2-A0</value>
+<value code=" 1">APM2-A1</value>
+<value code=" 2">APM2-A2</value>
+<value code=" 3">APM2-A3</value>
+<value code=" 4">APM2-A4</value>
+<value code=" 5">APM2-A5</value>
+<value code=" 6">APM2-A6</value>
+<value code=" 7">APM2-A7</value>
+<value code=" 8">APM2-A8</value>
+<value code=" 9">APM2-A9</value>
+<value code=" 11">PX4-airspeed port</value>
+<value code=" 15">Pixhawk-airspeed port</value>
+<value code=" 64">APM1-airspeed port</value>
+</values>
+</param>
+<param humanName="Rangefinder scaling" name="RNGFND3_SCALING" documentation="Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts.">
+<field name="Units">meters/Volt</field>
+<field name="Increment">0.001</field>
+</param>
+<param humanName="rangefinder offset" name="RNGFND3_OFFSET" documentation="Offset in volts for zero distance">
+<field name="Units">Volts</field>
+<field name="Increment">0.001</field>
+</param>
+<param humanName="Rangefinder function" name="RNGFND3_FUNCTION" documentation="Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.">
+<values>
+<value code="0">Linear</value>
+<value code="1">Inverted</value>
+<value code="2">Hyperbolic</value>
+</values>
+</param>
+<param humanName="Rangefinder minimum distance" name="RNGFND3_MIN_CM" documentation="Minimum distance in centimeters that rangefinder can reliably read">
+<field name="Units">centimeters</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Rangefinder maximum distance" name="RNGFND3_MAX_CM" documentation="Maximum distance in centimeters that rangefinder can reliably read">
+<field name="Units">centimeters</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Rangefinder stop pin" name="RNGFND3_STOP_PIN" documentation="Digital pin that enables/disables rangefinder measurement for an analog rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This can be used to ensure that multiple sonar rangefinders don't interfere with each other.">
+<values>
+<value code="-1">Not Used</value>
+<value code="50">Pixhawk AUXOUT1</value>
+<value code="51">Pixhawk AUXOUT2</value>
+<value code="52">Pixhawk AUXOUT3</value>
+<value code="53">Pixhawk AUXOUT4</value>
+<value code="54">Pixhawk AUXOUT5</value>
+<value code="55">Pixhawk AUXOUT6</value>
+<value code="111">PX4 FMU Relay1</value>
+<value code="112">PX4 FMU Relay2</value>
+<value code="113">PX4IO Relay1</value>
+<value code="114">PX4IO Relay2</value>
+<value code="115">PX4IO ACC1</value>
+<value code="116">PX4IO ACC2</value>
+</values>
+</param>
+<param humanName="Sonar settle time" name="RNGFND3_SETTLE" documentation="The time in milliseconds that the rangefinder reading takes to settle. This is only used when a STOP_PIN is specified. It determines how long we have to wait for the rangefinder to give a reading after we set the STOP_PIN high. For a sonar rangefinder with a range of around 7m this would need to be around 50 milliseconds to allow for the sonar pulse to travel to the target and back again.">
+<field name="Units">milliseconds</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Ratiometric" name="RNGFND3_RMETRIC" documentation="This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.">
+<values>
+<value code="0">No</value>
+<value code="1">Yes</value>
+</values>
+</param>
+<param humanName="Distance (in cm) from the second range finder to the ground" name="RNGFND3_GNDCLEAR" documentation="This parameter sets the expected range measurement(in cm) that the second range finder should return when the vehicle is on the ground." user="Advanced">
+<field name="Range">0 127</field>
+<field name="Increment">1</field>
+<field name="Units">centimeters</field>
+</param>
+<param humanName="Bus address of 2nd rangefinder" name="RNGFND3_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the LightWare I2C sensor to allow for multiple sensors on different addresses. A value of 0 disables the sensor." user="Advanced">
+<field name="Range">0 127</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Second Rangefinder type" name="RNGFND4_TYPE" documentation="What type of rangefinder device that is connected">
+<values>
+<value code="0">None</value>
+<value code="1">Analog</value>
+<value code="2">APM2-MaxbotixI2C</value>
+<value code="3">APM2-PulsedLightI2C</value>
+<value code="4">PX4-I2C</value>
+<value code="5">PX4-PWM</value>
+<value code="6">BBB-PRU</value>
+<value code="7">LightWareI2C</value>
+<value code="8">LightWareSerial</value>
+</values>
+</param>
+<param humanName="Rangefinder pin" name="RNGFND4_PIN" documentation="Analog pin that rangefinder is connected to. Set this to 0..9 for the APM2 analog pins. Set to 64 on an APM1 for the dedicated 'airspeed' port on the end of the board. Set to 11 on PX4 for the analog 'airspeed' port. Set to 15 on the Pixhawk for the analog 'airspeed' port.">
+<values>
+<value code="-1">Not Used</value>
+<value code=" 0">APM2-A0</value>
+<value code=" 1">APM2-A1</value>
+<value code=" 2">APM2-A2</value>
+<value code=" 3">APM2-A3</value>
+<value code=" 4">APM2-A4</value>
+<value code=" 5">APM2-A5</value>
+<value code=" 6">APM2-A6</value>
+<value code=" 7">APM2-A7</value>
+<value code=" 8">APM2-A8</value>
+<value code=" 9">APM2-A9</value>
+<value code=" 11">PX4-airspeed port</value>
+<value code=" 15">Pixhawk-airspeed port</value>
+<value code=" 64">APM1-airspeed port</value>
+</values>
+</param>
+<param humanName="Rangefinder scaling" name="RNGFND4_SCALING" documentation="Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts.">
+<field name="Units">meters/Volt</field>
+<field name="Increment">0.001</field>
+</param>
+<param humanName="rangefinder offset" name="RNGFND4_OFFSET" documentation="Offset in volts for zero distance">
+<field name="Units">Volts</field>
+<field name="Increment">0.001</field>
+</param>
+<param humanName="Rangefinder function" name="RNGFND4_FUNCTION" documentation="Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.">
+<values>
+<value code="0">Linear</value>
+<value code="1">Inverted</value>
+<value code="2">Hyperbolic</value>
+</values>
+</param>
+<param humanName="Rangefinder minimum distance" name="RNGFND4_MIN_CM" documentation="Minimum distance in centimeters that rangefinder can reliably read">
+<field name="Units">centimeters</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Rangefinder maximum distance" name="RNGFND4_MAX_CM" documentation="Maximum distance in centimeters that rangefinder can reliably read">
+<field name="Units">centimeters</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Rangefinder stop pin" name="RNGFND4_STOP_PIN" documentation="Digital pin that enables/disables rangefinder measurement for an analog rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This can be used to ensure that multiple sonar rangefinders don't interfere with each other.">
+<values>
+<value code="-1">Not Used</value>
+<value code="50">Pixhawk AUXOUT1</value>
+<value code="51">Pixhawk AUXOUT2</value>
+<value code="52">Pixhawk AUXOUT3</value>
+<value code="53">Pixhawk AUXOUT4</value>
+<value code="54">Pixhawk AUXOUT5</value>
+<value code="55">Pixhawk AUXOUT6</value>
+<value code="111">PX4 FMU Relay1</value>
+<value code="112">PX4 FMU Relay2</value>
+<value code="113">PX4IO Relay1</value>
+<value code="114">PX4IO Relay2</value>
+<value code="115">PX4IO ACC1</value>
+<value code="116">PX4IO ACC2</value>
+</values>
+</param>
+<param humanName="Sonar settle time" name="RNGFND4_SETTLE" documentation="The time in milliseconds that the rangefinder reading takes to settle. This is only used when a STOP_PIN is specified. It determines how long we have to wait for the rangefinder to give a reading after we set the STOP_PIN high. For a sonar rangefinder with a range of around 7m this would need to be around 50 milliseconds to allow for the sonar pulse to travel to the target and back again.">
+<field name="Units">milliseconds</field>
+<field name="Increment">1</field>
+</param>
+<param humanName="Ratiometric" name="RNGFND4_RMETRIC" documentation="This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.">
+<values>
+<value code="0">No</value>
+<value code="1">Yes</value>
+</values>
+</param>
+<param humanName="Distance (in cm) from the second range finder to the ground" name="RNGFND4_GNDCLEAR" documentation="This parameter sets the expected range measurement(in cm) that the second range finder should return when the vehicle is on the ground." user="Advanced">
+<field name="Range">0 127</field>
+<field name="Increment">1</field>
+<field name="Units">centimeters</field>
+</param>
+<param humanName="Bus address of 2nd rangefinder" name="RNGFND4_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the LightWare I2C sensor to allow for multiple sensors on different addresses. A value of 0 disables the sensor." user="Advanced">
+<field name="Range">0 127</field>
+<field name="Increment">1</field>
 </param>
 </parameters>
 <parameters name="TERRAIN_">
@@ -4974,6 +5176,12 @@
 </values>
 <field name="Increment">1000</field>
 <field name="Units">Centi-Degrees/Sec/Sec</field>
+</param>
+<param humanName="Angle Boost" name="ATC_ANGLE_BOOST" documentation="Angle Boost increases output throttle as the vehicle leans to reduce loss of altitude" user="Advanced">
+<values>
+<value code="0">Disabled</value>
+<value code=" 1">Enabled</value>
+</values>
 </param>
 </parameters>
 <parameters name="POSCON_">

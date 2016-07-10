@@ -38,9 +38,10 @@ public:
         FLIP        = 14,
         AUTOTUNE    = 15,
         POS_HOLD    = 16, // HYBRID LOITER.
-        BRAKE       = 17
+        BRAKE       = 17,
+        TERRA_LANDER       = 18
     };
-    static const int modeCount = 18;
+    static const int modeCount = 19;
 
     APMCopterMode(uint32_t mode, bool settable);
 };
